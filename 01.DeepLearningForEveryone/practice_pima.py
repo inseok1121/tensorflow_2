@@ -38,7 +38,7 @@ layer_1 = tf.nn.relu(layer_1)
 layer_2 = tf.add(tf.matmul(layer_1, w['h2']), b['b2'])
 layer_2 = tf.nn.relu(layer_2)
 layer_3 = tf.add(tf.matmul(layer_2, w['h3']), b['b3'])
-layer_4 = tf.nn.relu(layer_3)
+layer_3 = tf.nn.relu(layer_3)
 
 out_layer = tf.add(tf.matmul(layer_3, w['out']), b['out'])
 
@@ -51,8 +51,12 @@ optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
 init = tf.global_variables_initializer()
 
 with tf.Session() as sess:
+
+    merged_summary = tf.summary.merge_all()
+    writer = tf.summary.FileWriter("./logs/pima_tf-1")
+    writer.add_graph(sess.graph)
     sess.run(init)
-    for epoch in range(20001):
+    for epoch in range(60001):
 
         result = sess.run([optimizer, cost], feed_dict={X: x_data, Y: y_data})
         if epoch % 1000 == 0:
