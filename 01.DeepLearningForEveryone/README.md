@@ -23,7 +23,7 @@ RMSE = \sqrt{(mean(p_i - y_i)^2)}
 $$
 ​		Gradient Decent : Reducing the cost
 
-​			Learning rate : move distance on gradient decent.
+​			Learning rate : move distance on gradient descent.
 
 ```python
 	tf.train.GradientDescentOptimizer(learning_rate).minimize(rmse)
@@ -71,6 +71,25 @@ $$
 ​		Activation function separate true and false of weighted sum's result.
 
 ​		ex) sigmoid, Relu
+
+​	
+
+​	Multiperceptron needs hidden layer.
+
+
+
+##### 	Backpropagation
+
+​		Backpropation is extention of gradient decent.
+
+1. Calculate the result*(y)* after giving any initial weights*(w)*.
+2. Obtain the cost between the calculation result*(y)* and the value we want.
+3. Using the Gradient descent method, the immediately preceding weight is updated in a direction in which the cost becomes smaller.
+4. 1 ~ 3 recursion.
+
+
+
+
 
 
 
