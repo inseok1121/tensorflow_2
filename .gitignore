@@ -3,3 +3,4 @@ venv/
 */dataset/
 */logs/
 converter.py
+*/MNIST_data/
