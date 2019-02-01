@@ -16,12 +16,12 @@ t = tf.placeholder(tf.float32, shape=[None, 1])
 
 W = tf.Variable(tf.truncated_normal([2, num_hidden]))
 b = tf.Variable(tf.zeros([num_hidden]))
-h = tf.nn.softmax(tf.matmul(x, W) + b)
+h = tf.nn.sigmoid(tf.matmul(x, W) + b)
 
 
 V = tf.Variable(tf.truncated_normal([num_hidden, 1]))
 c = tf.Variable(tf.zeros([1]))
-y = tf.nn.softmax(tf.matmul(h, V) + c)
+y = tf.nn.sigmoid(tf.matmul(h, V) + c)
 
 cross_entropy = -tf.reduce_mean(t * tf.log(y) + (1 - t) * tf.log(1 - y))
 train_step = tf.train.GradientDescentOptimizer(0.05).minimize(cross_entropy)
@@ -35,7 +35,7 @@ init = tf.global_variables_initializer()
 sess = tf.Session()
 sess.run(init)
 
-for epoch in range(100):
+for epoch in range(500):
     X_, Y_ = shuffle(X_train, Y_train)
 
     for i in range(n_batches):
