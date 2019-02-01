@@ -57,7 +57,6 @@ train = tf.train.GradientDescentOptimizer(learning_rate=0.1).minimize(cost)
 predicted = tf.cast(hypothesis > 0.5, dtype=tf.float32)
 acurracy = tf.reduce_mean(tf.cast(tf.equal(predicted, Y), dtype=tf.float32))
 
-w2_hist = tf.summary.histogram("weights2", W2)
 cost_summ = tf.summary.scalar("cost", cost)
 
 summary = tf.summary.merge_all()
